@@ -33,7 +33,7 @@ class Game(Instance):
             return True
         for object in self.objects:
             if type(object) != Bird:
-                object.x -= 2
+                object.x -= 1
             else:
                 object.update()
         if self.up_pipes[0].x == -47:
@@ -55,6 +55,10 @@ class Game(Instance):
     def col(self):
         bird = self.objects[0]
         flag = False
+        if bird.y + bird.h > 320:
+            flag = True
+        if bird.y < 0:
+            flag = True
         for object in self.objects:
             if type(object) != Bird:
                 if (
