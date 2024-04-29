@@ -9,7 +9,7 @@ class MainMenu(Instance):
         super().__init__()
         self.is_starting = False
         pyxel.mouse(True)
-        self.objects.append(Button(0, 0, 0, 0, 0, 136, 32, self.start))
+        self.objects.append(Button(22, 144, 0, 0, 0, 136, 32, self.start))
 
     def start(self):
         self.is_starting = True

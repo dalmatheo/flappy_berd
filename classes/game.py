@@ -9,6 +9,7 @@ from classes.object import Object
 
 class Game(Instance):
     def __init__(self) -> None:
+        pyxel.mouse(False)
         self.ticks = 0
         self.lost = False
         super().__init__()
@@ -21,7 +22,7 @@ class Game(Instance):
             down_pipe = Object(227 + 92 * i, y2, 1, 50, 0, 44, 238, 7)
             self.up_pipes.append(up_pipe)
             self.down_pipes.append(down_pipe)
-        self.objects.append(Bird(16, 0, 1, 127, 8, 32, 24, 14))
+        self.objects.append(Bird(16, 148, 1, 127, 8, 32, 24, 14))
         for pipe in self.up_pipes:
             self.objects.append(pipe)
         for pipe in self.down_pipes:
@@ -32,7 +33,7 @@ class Game(Instance):
             return True
         for object in self.objects:
             if type(object) != Bird:
-                object.x -= 1
+                object.x -= 2
             else:
                 object.update()
         if self.up_pipes[0].x == -47:
@@ -53,7 +54,6 @@ class Game(Instance):
 
     def col(self):
         bird = self.objects[0]
-        print("test2")
         flag = False
         for object in self.objects:
             if type(object) != Bird:
